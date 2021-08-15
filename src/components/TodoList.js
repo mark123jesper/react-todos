@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Todo from './Todo';
 import TodoForm from './TodoForm';
 
+const retrieveData = localStorage.getItem('Todos') ? JSON.parse(localStorage.getItem('Todos')) : [];
+
 const TodoList = () => {
 
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState(retrieveData);
 
     const addTodo = (todo) => {
         if (!todo.text || /^\s*$/.test(todo.text)) {
@@ -24,9 +26,14 @@ const TodoList = () => {
     }
 
     const removeTodo = (id) => {
-        const removeArr = [...todos].filter(todo => todo.id !== id);
+        if (window.confirm('Are you sure you want to delete all of your entries?')) {
 
-        setTodos(removeArr);
+            const removeArr = [...todos].filter(todo => todo.id !== id);
+            setTodos(removeArr);
+
+        } else {
+            return false;
+        };
     };
 
     const completeTodo = (id) => {
@@ -39,8 +46,14 @@ const TodoList = () => {
         setTodos(updatedTodos);
     }
 
+    useEffect(() => {
+
+        localStorage.setItem('Todos', JSON.stringify(todos));
+
+    }, [todos])
+
     return (
-        <div className='formWrapper'>
+        <div className='col-lg-6'>
             <TodoForm onSubmit={addTodo} />
             <Todo
                 todos={todos}

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { AiFillCloseCircle } from 'react-icons/ai';
 import { TiEdit } from 'react-icons/ti';
-import TodoForm from './TodoForm';
+import ThoughtForm from './ThoughtForm';
 
-const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
+const Thought = ({ thoughts, completeThought, removeThought, updateThought }) => {
 
     const [edit, setEdit] = useState({
         id: null,
@@ -11,7 +11,7 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     });
 
     const submitUpdate = (value) => {
-        updateTodo(edit.id, value);
+        updateThought(edit.id, value);
         setEdit({
             id: null,
             value: ''
@@ -19,37 +19,37 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     };
 
     if (edit.id) {
-        return <TodoForm edit={edit} onSubmit={submitUpdate} />
+        return <ThoughtForm edit={edit} onSubmit={submitUpdate} />
     };
 
     return (
 
         <div className="m-2 mb-4 border-rounded">
 
-            {todos.map((todo) => (
+            {thoughts.map((thought) => (
                 <div
-                    className={todo.isComplete ? 'todo-row complete' : 'todo-row'}
-                    key={todo.id}
+                    className={thought.isComplete ? 'todo-row complete' : 'todo-row'}
+                    key={thought.id}
                 >
                     <div className='d-flex col-12 p-2 justify-content-between'>
-                        <div onClick={() => completeTodo(todo.id)}>
-                            {todo.date}
+                        <div onClick={() => completeThought(thought.id)}>
+                            {thought.date}
                         </div>
 
                         <div className="icons">
                             <AiFillCloseCircle
-                                onClick={() => removeTodo(todo.id)}
+                                onClick={() => removeThought(thought.id)}
                                 className="delete-icon"
                             />
                             <TiEdit
-                                onClick={() => setEdit({ id: todo.id, text: todo.text, date: todo.date })}
+                                onClick={() => setEdit({ id: thought.id, text: thought.text, date: thought.date })}
                                 className="edit-icon"
                             />
                         </div>
                     </div>
 
-                    <pre onClick={() => completeTodo(todo.id)} className='col-12 p-2'>
-                        {todo.text}
+                    <pre onClick={() => completeThought(thought.id)} className='col-12 p-2'>
+                        {thought.text}
                     </pre>
 
                 </div>
@@ -58,4 +58,4 @@ const Todo = ({ todos, completeTodo, removeTodo, updateTodo }) => {
     )
 }
 
-export default Todo
+export default Thought

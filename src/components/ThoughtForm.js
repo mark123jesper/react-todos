@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-const TodoForm = (props) => {
+const ThoughtForm = (props) => {
 
     const [input, setInput] = useState(props.edit ? props.edit.text : '');
     const [date, setDate] = useState(props.edit ? props.edit.date : '');
@@ -49,7 +49,7 @@ const TodoForm = (props) => {
                 (
                     <form onSubmit={handleSubmit} className='m-2'>
                         <div className='text-center'>
-                            <h4>Tasks for the Day</h4>
+                            <h4>Thoughts for the Day</h4>
                         </div>
 
                         <input
@@ -84,7 +84,7 @@ const TodoForm = (props) => {
 
                     <form onSubmit={handleSubmit} className='m-2'>
                         <div className='text-center'>
-                            <h4>Tasks for the Day</h4>
+                            <h4>Thoughts for the Day</h4>
                         </div>
 
                         <input
@@ -110,7 +110,7 @@ const TodoForm = (props) => {
 
                         <div>
                             <button className='btn btn-success col-12'>
-                                Add To-Do
+                                Add your Thoughts
                             </button>
                         </div>
                     </form>
@@ -120,4 +120,4 @@ const TodoForm = (props) => {
     )
 }
 
-export default TodoForm
+export default ThoughtForm

@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
     return (
         <header className='row'>
-            <h2>Mark.bit</h2>
+            <h2>&lt;/Mark.bit&gt;</h2>
         </header>
     )
 }
