@@ -79,7 +79,7 @@ const ThoughtForm = (props, { deleteAllHandler }) => {
                             <textarea
                                 className='form-control  mt-1'
                                 value={input}
-                                placeholder='Place To-Do'
+                                placeholder='Place your Thoughts Here'
                                 onChange={handleChange}
                                 ref={inputRef}
                                 rows='10'
