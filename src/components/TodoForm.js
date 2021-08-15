@@ -79,7 +79,7 @@ const TodoForm = (props) => {
                             <textarea
                                 className='form-control  mt-1'
                                 value={input}
-                                placeholder='Place To-Do'
+                                placeholder='Place your Tasks here'
                                 onChange={handleChange}
                                 ref={inputRef}
                                 rows='10'
@@ -114,7 +114,7 @@ const TodoForm = (props) => {
                             <textarea
                                 className='form-control  mt-1'
                                 value={input}
-                                placeholder='Place To-Do'
+                                placeholder='Place your Tasks here'
                                 onChange={handleChange}
                                 ref={inputRef}
                                 rows='10'

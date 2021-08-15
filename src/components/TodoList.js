@@ -26,7 +26,7 @@ const TodoList = () => {
     }
 
     const removeTodo = (id) => {
-        if (window.confirm('Are you sure you want to delete all of your entries?')) {
+        if (window.confirm('Are you sure you want to delete this entry?')) {
 
             const removeArr = [...todos].filter(todo => todo.id !== id);
             setTodos(removeArr);
