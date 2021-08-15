@@ -26,7 +26,7 @@ const ThoughtList = () => {
     }
 
     const removeThought = (id) => {
-        if (window.confirm('Are you sure you want to delete all of your entries?')) {
+        if (window.confirm('Are you sure you want to delete this entry?')) {
 
             const removeArr = [...thoughts].filter(thought => thought.id !== id);
             setThoughts(removeArr);
