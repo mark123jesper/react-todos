@@ -36,6 +36,15 @@ const ThoughtList = () => {
         };
     };
 
+    const deleteAllThoughts = () => {
+        if (window.confirm('Are you sure you want to delete all of your entries?')) {
+            setThoughts([]);
+
+        } else {
+            return false;
+        };
+    };
+
     const completeThought = (id) => {
         let updatedThoughts = thoughts.map(thought => {
             if (thought.id === id) {
@@ -44,7 +53,7 @@ const ThoughtList = () => {
             return thought;
         });
         setThoughts(updatedThoughts);
-    }
+    };
 
     useEffect(() => {
 
@@ -54,7 +63,10 @@ const ThoughtList = () => {
 
     return (
         <div className='col-lg-6'>
-            <ThoughtForm onSubmit={addThought} />
+            <ThoughtForm
+                onSubmit={addThought}
+                onClick={deleteAllThoughts}
+            />
             <Thought
                 thoughts={thoughts}
                 completeThought={completeThought}

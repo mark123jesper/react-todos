@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 
-const ThoughtForm = (props) => {
+const ThoughtForm = (props, { deleteAllHandler }) => {
 
     const [input, setInput] = useState(props.edit ? props.edit.text : '');
     const [date, setDate] = useState(props.edit ? props.edit.date : '');
@@ -42,6 +42,19 @@ const ThoughtForm = (props) => {
         }
     }
 
+    const handleDeleteAll = (e) => {
+        e.preventDefault();
+
+        props.onClick({
+            id: null,
+            text: null,
+            date: null
+        });
+        setInput('');
+        setDate('');
+
+    }
+
     return (
         <div>
 
@@ -64,7 +77,7 @@ const ThoughtForm = (props) => {
 
                         <div>
                             <textarea
-                                className='form-control'
+                                className='form-control  mt-1'
                                 value={input}
                                 placeholder='Place To-Do'
                                 onChange={handleChange}
@@ -99,7 +112,7 @@ const ThoughtForm = (props) => {
 
                         <div>
                             <textarea
-                                className='form-control'
+                                className='form-control mt-1'
                                 value={input}
                                 placeholder='Place To-Do'
                                 onChange={handleChange}
@@ -111,6 +124,12 @@ const ThoughtForm = (props) => {
                         <div>
                             <button className='btn btn-success col-12'>
                                 Add your Thoughts
+                            </button>
+                        </div>
+
+                        <div>
+                            <button type='button' className='btn btn-danger' onClick={handleDeleteAll} >
+                                Delete All
                             </button>
                         </div>
                     </form>

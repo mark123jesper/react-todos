@@ -36,6 +36,15 @@ const TodoList = () => {
         };
     };
 
+    const deleteAllTodos = () => {
+        if (window.confirm('Are you sure you want to delete all of your entries?')) {
+            setTodos([]);
+
+        } else {
+            return false;
+        };
+    };
+
     const completeTodo = (id) => {
         let updatedTodos = todos.map(todo => {
             if (todo.id === id) {
@@ -54,7 +63,10 @@ const TodoList = () => {
 
     return (
         <div className='col-lg-6'>
-            <TodoForm onSubmit={addTodo} />
+            <TodoForm
+                onSubmit={addTodo}
+                onClick={deleteAllTodos}
+            />
             <Todo
                 todos={todos}
                 completeTodo={completeTodo}
